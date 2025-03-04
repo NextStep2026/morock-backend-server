@@ -1,5 +1,8 @@
 package com.common.dto;
 
+import lombok.Getter;
+
+@Getter
 public class ApiResponse<T> {
     private final boolean success;
     private final T data;

@@ -17,4 +17,5 @@ public class ErrorResponse {
     public String getErrorCode() {
         return errorCode;
     }
+
 }

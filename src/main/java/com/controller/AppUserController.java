@@ -8,9 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-@Controller
-@ResponseBody
+
+@RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/app_user")
 public class AppUserController {
@@ -20,12 +21,12 @@ public class AppUserController {
      * 엡 회원 다건 조회
      * 엡 회원 목록을 검색조건에 맞게 조회 할 수 있다
      *
-     * @param appUser 조회조건 정보
      * @return 성공시 엡 회원 목록 응답
      */
     @GetMapping
-    public ResponseEntity<ApiResponse<AppUser>> getAppUsers(@RequestBody AppUser appUser) {
-        return ResponseEntity.ok(ApiResponse.success(appUserService.getAppUsers(appUser)));
+    public ResponseEntity<ApiResponse<List<AppUser>>> getAppUsers() {
+        List<AppUser> users = appUserService.getAppUsers();
+        return ResponseEntity.ok(ApiResponse.success(users));
     }
 
     /**
@@ -36,8 +37,8 @@ public class AppUserController {
      * @return 성공시 id 대상 엡 회원 응답
      */
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ApiResponse<AppUser>> getAppUserById(@PathVariable String id) {
-        return ResponseEntity.ok(ApiResponse.success(appUserService.getAppUser(id)));
+    public ResponseEntity<ApiResponse<AppUser>> getAppUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(ApiResponse.success(appUserService.getAppUserById(id)));
     }
 
     /**
@@ -62,9 +63,9 @@ public class AppUserController {
      * @return 성공 여부 응답
      */
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ApiResponse<AppUser>> updateAppUser(@PathVariable String id, @RequestBody AppUser appUser) {
-        appUserService.updateAppUser(appUser);
-        return ResponseEntity.ok(ApiResponse.success(appUserService.getAppUser(id)));
+    public ResponseEntity<ApiResponse<AppUser>> updateAppUser(@PathVariable Long id, @RequestBody AppUser appUser) {
+        appUserService.updateAppUser(id, appUser);
+        return ResponseEntity.ok(ApiResponse.success(appUserService.getAppUserById(id)));
     }
 
     /**
@@ -76,9 +77,20 @@ public class AppUserController {
      * @return 성공 여부 응답
      */
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<ApiResponse<AppUser>> deleteAppUser(@PathVariable String id) {
+    public ResponseEntity<ApiResponse<AppUser>> deleteAppUser(@PathVariable Long id) {
         appUserService.deleteAppUser(id);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * 로그인 ID로 회원 단건 조회
+     * 로그인 ID로 회원 정보를 조회 할 수 있다
+     * @param loginId 로그인 ID
+     * @return 성공 여부 응답
+     */
+    @GetMapping("/login-id/{loginId}")
+    public ResponseEntity<ApiResponse<AppUser>> getAppUserByLoginId(@PathVariable String loginId) {
+        AppUser user = appUserService.getAppUserByLoginId(loginId);
+        return ResponseEntity.ok(ApiResponse.success(user));
+    }
 }
