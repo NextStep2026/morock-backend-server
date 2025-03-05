@@ -2,7 +2,7 @@ package com.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -54,7 +54,7 @@ public class AppUserEntity {
 
     // 회원 생년월일
     @Column(name = "birth_date")
-    private LocalDate birthDate;
+    private LocalDateTime birthDate;
 
     // 회원 전화번호
     @Column(name = "phone_number", length = 15)
@@ -62,11 +62,11 @@ public class AppUserEntity {
 
     // 생성일
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     // 수정일
     @Column(name = "updated_at")
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 
 
 }

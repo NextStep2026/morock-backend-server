@@ -4,6 +4,7 @@ import com.domain.dto.AppUser;
 import com.domain.entity.AppUserEntity;
 import com.domain.repository.AppUserRepository;
 import com.mapper.AppUserMapper;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AppUserService {
+
 
     private final AppUserRepository appUserRepository;
     /**
@@ -47,7 +49,6 @@ public class AppUserService {
      * 엡 회원 정보를 등록 할 수 있다.
      *
      * @param appUser 회원정보
-     * @return 성공 여부 응답
      */
     @Transactional
     public void addAppUser(AppUser appUser) {

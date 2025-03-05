@@ -3,6 +3,7 @@ package com.domain.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,8 +22,8 @@ public class AppUser {
     private String naverAccount;
     private String appleAccount;
     private String name;
-    private LocalDate birthDate;
+    private LocalDateTime birthDate;
     private String phoneNumber;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
