@@ -4,12 +4,12 @@ import com.domain.dto.AppUser;
 import com.domain.entity.AppUserEntity;
 import com.domain.repository.AppUserRepository;
 import com.mapper.AppUserMapper;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -97,4 +97,5 @@ public class AppUserService {
                 .map(AppUserMapper::toDto)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with loginId: " + loginId));
     }
+
 }

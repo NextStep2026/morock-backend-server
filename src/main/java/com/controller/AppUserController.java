@@ -13,12 +13,11 @@ import java.util.List;
 
 
 @RestController
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping(value = "/app_user")
 public class AppUserController {
 
-    @Autowired
-    AppUserService appUserService;
+    private final AppUserService appUserService;
 
     /**
      * 엡 회원 다건 조회

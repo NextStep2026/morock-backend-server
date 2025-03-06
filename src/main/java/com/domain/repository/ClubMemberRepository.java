@@ -8,4 +8,5 @@ import org.springframework.data.repository.query.Param;
 public interface ClubMemberRepository extends JpaRepository<ClubMemberEntity, Long> {
 
 
+    Long findRankIdByClubIdAndUserId(Long clubId, Long userId);
 }

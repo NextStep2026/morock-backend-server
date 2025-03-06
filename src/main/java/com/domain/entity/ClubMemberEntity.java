@@ -37,4 +37,8 @@ public class ClubMemberEntity {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;  // 수정일
+
+    @ManyToOne(fetch = FetchType.LAZY)  // 필요 시 EAGER로 변경
+    @JoinColumn(name = "rank_id", foreignKey = @ForeignKey(name = "fk_club_member_rank_id"))
+    private ClubRankEntity rankId;  // 클럽 내 회원 등급 정보 (club_rank 테이블과 연결)
 }

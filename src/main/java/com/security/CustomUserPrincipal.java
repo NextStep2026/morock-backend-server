@@ -1,46 +1,20 @@
 package com.security;
 
-import com.domain.dto.AppUser;
-import com.domain.entity.AppUserEntity;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
-import java.util.Collections;
-
 @Getter
-public class CustomUserPrincipal implements UserDetails {
+@Setter
+public class CustomUserPrincipal extends User {
 
-    private final Long userId;
-    private final String username;
+    private Long userId;
+    private Long currentClubId;  // 현재 선택된 클럽 ID 저장
 
-    public CustomUserPrincipal(AppUserEntity user) {
-        this.userId = user.getUserId();
-        this.username = user.getName();
+    public CustomUserPrincipal(String username, String password, Collection<? extends GrantedAuthority> authorities, Long userId) {
+        super(username, password, authorities);
+        this.userId = userId;
     }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
-    }
-
-    @Override
-    public String getPassword() { return null; }
-
-    @Override
-    public String getUsername() { return username; }
-
-    @Override
-    public boolean isAccountNonExpired() { return true; }
-
-    @Override
-    public boolean isAccountNonLocked() { return true; }
-
-    @Override
-    public boolean isCredentialsNonExpired() { return true; }
-
-    @Override
-    public boolean isEnabled() { return true; }
 }

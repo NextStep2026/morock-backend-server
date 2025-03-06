@@ -22,15 +22,14 @@ public class ClubPermissionService {
      */
     public boolean hasPermission(Long clubId, Long userId, String permissionKey) {
         // 1. 해당 모임의 회원이 갖고 있는 랭크 조회
-//        Long rankId = clubMemberRepository.findRankIdByClubIdAndUserId(clubId, userId);
-//
-//        if (rankId == null) {
-//            // 모임에 가입되어 있지 않으면 권한 없음
-//            return false;
-//        }
-//
-//        // 2. 해당 랭크가 해당 권한을 갖고 있는지 조회
-//        return clubRankPermissionRepository.existsByClubIdAndRankIdAndPermissionKey(clubId, rankId, permissionKey);
-        return true;
+        Long rankId = clubMemberRepository.findRankIdByClubIdAndUserId(clubId, userId);
+
+        if (rankId == null) {
+            // 모임에 가입되어 있지 않으면 권한 없음
+            return false;
+        }
+
+        // 2. 해당 랭크가 해당 권한을 갖고 있는지 조회
+        return clubRankPermissionRepository.existsByClubIdAndRankIdAndPermissionKey(clubId, rankId, permissionKey);
     }
 }
