@@ -26,7 +26,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/public/**").permitAll() // 로그인, 회원가입 등 공개 URL
+                        .requestMatchers("/auth/**", "/public/**", // 로그인, 회원가입 등 공개 URL
+                                "/swagger-ui/**",                    // Swagger UI 접근 허용
+                                "/v3/api-docs/**",                   // OpenAPI 문서 접근 허용
+                                "/swagger-ui.html"                   // Swagger UI HTML 접근 허용
+
+                        ).permitAll()
+
                         .anyRequest().authenticated() // 나머지는 인증 필요
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
