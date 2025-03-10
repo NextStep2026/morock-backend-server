@@ -10,27 +10,27 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
-    @Bean
-    public OpenAPI openAPI(){
-        String jwt = "JWT";
-        SecurityRequirement securityRequirement = new SecurityRequirement().addList(jwt);
-        Components components = new Components().addSecuritySchemes(jwt, new SecurityScheme()
-                .name(jwt)
-                .type(SecurityScheme.Type.HTTP)
-                .scheme("bearer")
-                .bearerFormat("JWT")
-        );
-        return new OpenAPI()
-                .components(new Components())
-                .info(apiInfo())
-                .addSecurityItem(securityRequirement)
-                .components(components);
 
+    @Bean
+    public OpenAPI openAPI() {
+        String securitySchemeName = "bearerAuth";
+
+        return new OpenAPI().addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
+                .components(new Components().addSecuritySchemes("JWT", createAPIKeyScheme()))
+                .info(apiInfo());
     }
+
     private Info apiInfo() {
         return new Info()
                 .title("MOROCK API")
-                .description("모이는 즐거움:MOROCK API")
+                .description("모이는 즐거움: MOROCK API")
                 .version("v0.0.1");
+    }
+
+
+    private SecurityScheme createAPIKeyScheme() {
+        return new SecurityScheme().type(SecurityScheme.Type.HTTP)
+                .bearerFormat("JWT")
+                .scheme("bearer");
     }
 }
