@@ -30,9 +30,7 @@ public class SecurityConfig {
                                 "/swagger-ui/**",                    // Swagger UI 접근 허용
                                 "/v3/api-docs/**",                   // OpenAPI 문서 접근 허용
                                 "/swagger-ui.html"                   // Swagger UI HTML 접근 허용
-
                         ).permitAll()
-
                         .anyRequest().authenticated() // 나머지는 인증 필요
                 )
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
