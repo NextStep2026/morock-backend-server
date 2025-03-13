@@ -41,18 +41,40 @@ public class PlaceController {
         return ResponseEntity.ok(ApiResponse.success(placeService.getPlaceById(id)));
     }
 
+    /**
+     * 장소 등록
+     * 장소를 등록할 수 있다.
+     *
+     * @param place
+     * @return
+     */
     @PostMapping
     public ResponseEntity<ApiResponse<PlaceDTO>> addPlace(@RequestBody PlaceDTO place) {
         placeService.addPlace(place);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * 장소 수정
+     * 장소 정보를 수정할 수 있다.
+     *
+     * @param id
+     * @param place
+     * @return
+     */
     @PutMapping(value = "/{id}")
     public ResponseEntity<ApiResponse<PlaceDTO>> updatePlace(@PathVariable Long id, @RequestBody PlaceDTO place) {
         placeService.updatePlace(id, place);
         return ResponseEntity.ok(ApiResponse.success(placeService.getPlaceById(id)));
     }
 
+    /**
+     * 장소 삭제
+     * 장소 정보를 삭제할 수 있다.
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ApiResponse<PlaceDTO>> deletePlace(@PathVariable Long id) {
         placeService.deletePlace(id);
