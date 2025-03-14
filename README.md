@@ -6,13 +6,18 @@
 
 
 ## :hourglass: 프로젝트 기간
+- 2025.01 ~
 
 ## :wrench: 기술 스택
-
+- java17
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- PostgreSQL
+- Docker
+- Azure
 
 ## 시작가이드
-
----
     DOCKER SETTING
 
     1. DORCKER 설치 https://www.docker.com/
