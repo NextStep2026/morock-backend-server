@@ -1,9 +1,5 @@
 package com.controller;
 
-import com.domain.dto.ParticipationMessage;
-import com.service.redis.RedisPublisher;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
