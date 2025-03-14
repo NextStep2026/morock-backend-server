@@ -1,8 +1,4 @@
-## Morock Server
-
----
-
-# :loudspeaker: "모이는 즐거움:Morock" 서버 리포지토리 
+# :loudspeaker: "모이는 즐거움:Morock" Server
 
 
 ## :hourglass: 프로젝트 기간
