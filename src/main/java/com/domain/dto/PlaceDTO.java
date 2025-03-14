@@ -17,26 +17,26 @@ public class PlaceDTO {
     private String placeName;            // 장소명
     private Double latitude;        // 위도
     private Double longitude;       // 경도
-    private String description;            // 설명
-    private Long registeredById;    // 등록자 ID (앱회원 테이블 id)
+    private String address;            // 설명
+    private Long registrantId;    // 등록자 ID (앱회원 테이블 id)
     private LocalDateTime createdAt; // 등록일
     private LocalDateTime updatedAt; // 수정일
 
 
     // 정적 팩토리 메서드 (of)
-    public static PlaceDTO of(Long placeId, String name, Double latitude, Double longitude, String description, Long registeredById, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        return new PlaceDTO(placeId, name, latitude, longitude, description, registeredById, createdAt, updatedAt);
+    public static PlaceDTO of(Long placeId, String placeName, Double latitude, Double longitude, String address, Long registrantId, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        return new PlaceDTO(placeId, placeName, latitude, longitude, address, registrantId, createdAt, updatedAt);
     }
 
     // 엔티티 -> DTO 변환 메서드 (fromEntity)
-    public static PlaceDTO fromEntty(PlaceEntity entity) {
+    public static PlaceDTO fromEntity(PlaceEntity entity) {
         return new PlaceDTO(
                 entity.getPlaceId(),
                 entity.getPlaceName(),
                 entity.getLatitude(),
                 entity.getLongitude(),
-                entity.getDescription(),
-                entity.getRegisteredById(),
+                entity.getAddress(),
+                entity.getRegistrantId(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

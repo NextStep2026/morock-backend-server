@@ -22,24 +22,24 @@ public class PlaceEntity {
 
 
     // 장소 이름
-    @Column(name = "", nullable = false, length = 50)
+    @Column(name = "place_name", nullable = false, length = 50)
     private String placeName;
 
     // 위도
-    @Column(name = "", nullable = false)
+    @Column(name = "latitude")
     private Double latitude;
 
     // 경도
-    @Column(name = "", nullable = false)
+    @Column(name = "longitude")
     private Double longitude;
 
     // 장소 설명
-    @Column(name = "", length = 100)
-    private String description;
+    @Column(name = "address")
+    private String address;
 
     // 등록자 id
-    @Column(name= "")
-    private Long registeredById;
+    @Column(name= "registrant_id")
+    private Long registrantId;
 
     // 생성일
     @Column(name = "created_at")
