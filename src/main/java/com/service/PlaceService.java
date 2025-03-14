@@ -17,12 +17,7 @@ public class PlaceService {
 
     private final PlaceRepository placeRepository;
 
-    /**
-     * 엡 회원 다건 조회
-     * 엡 회원 목록을 검색조건에 맞게 조회 할 수 있다
-     *
-     * @return 성공시 엡 회원 목록 응답
-     */
+
     @Transactional(readOnly = true)
     public List<PlaceDTO> getPlaces() {
         return placeRepository.findAll().stream()
