@@ -13,7 +13,9 @@ import java.time.LocalDateTime;
 @Entity
 @IdClass(com.domain.id.ClubRankPermissionId.class)
 @Table(name = "club_rank_permission")
-public class ClubRankPermissionEntity {
+public class
+
+ClubRankPermissionEntity {
 
     @Id
     private Long clubId;
