@@ -1,11 +1,13 @@
 server:
   port: 8080  # 서버 포트
   tomcat:
-    max: 64   # 최대 동시 요청을 64개까지 처리 (WebSocket + REST API)
+    threads:
+      max: 64   # 최대 동시 요청을 64개까지 처리 (WebSocket + REST API)
     accept-count: 100  # 요청이 밀릴 때 최대 100개까지 대기 가능
     max-connections: 500  # 최대 동시 연결 수 (WebSocket 포함)
-    connection-timeout: 5000  # 연결 타임아웃 (밀리초)
+    connection-timeout: 30000  # 연결 타임아웃 (밀리초)
 spring:
+
   application:
     name: morock-backend-server
   websocket:
@@ -14,7 +16,6 @@ spring:
       simple:
         prefix: "/topic"  # 메시지 브로커 경로 설정
     app-destination-prefixes: "/app"  # 클라이언트에서 서버로 메시지 보낼 경로
-
   security:
     oauth2:
       client:
@@ -23,6 +24,12 @@ spring:
             client-id: your-client-id
             client-secret: your-client-secret
             scope: profile, email
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST}
+      port: ${SPRING_REDIS_PORT}
+      password: ${SPRING_REDIS_PASSWORD}
+
 
   datasource:
     url: jdbc:postgresql://morak-postgresql-server.postgres.database.azure.com:5432/morak_db

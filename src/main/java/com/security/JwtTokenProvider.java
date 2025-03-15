@@ -2,13 +2,16 @@ package com.security;
 
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
-    private final String secretKey = "your_secret_key";
+    @Value("${jwt.secret}")
+    private String secretKey;
+
     private final long validityInMilliseconds = 3600000; // 1시간
 
     public String createToken(Long userId) {
