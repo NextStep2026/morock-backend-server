@@ -20,9 +20,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'           // Spring Web (MVC)
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'          // JDBC
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'      // JPA & Hibernate
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'     // WebSocket
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // oauth2
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'    // redis
+//    implementation 'io.jsonwebtoken:jjwt:0.11.5'                                // oauth2 로그인 후 jwt토큰 발급
     // ==========================
     // ✅ Test 라이브러리 (JUnit5 & Spring Boot Test)
     // ==========================
