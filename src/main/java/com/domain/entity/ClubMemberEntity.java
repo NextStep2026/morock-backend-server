@@ -17,13 +17,13 @@ public class ClubMemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "club_member_id")
+    @Column(name = "club_member_id", nullable = false)
     private Long clubMemberId;  // 모임 회원 고유 ID (PK)
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;  // 앱 회원 ID (FK)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user"))
+    private AppUserEntity userId;  // 앱 회원 ID (FK)
 
-    @Column(name = "club_id", nullable = false)
+    @JoinColumn(name = "club_id", foreignKey = @ForeignKey(name = "fk_club"))
     private Long clubId;  // 모임 ID (FK)
 
     @Column(name = "member_role", length = 10)
