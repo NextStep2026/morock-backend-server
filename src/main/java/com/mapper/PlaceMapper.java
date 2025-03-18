@@ -18,4 +18,5 @@ public class PlaceMapper {
                 .updatedAt(dto.getUpdatedAt())
                 .build();
     }
+
 }
