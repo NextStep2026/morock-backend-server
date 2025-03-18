@@ -12,7 +12,8 @@ public class PlaceMapper {
                 .placeName(dto.getPlaceName())
                 .latitude(dto.getLatitude())
                 .longitude(dto.getLongitude())
-                .description(dto.getDescription())
+                .address(dto.getAddress())
+                .registrantId(dto.getRegistrantId())
                 .createdAt(dto.getCreatedAt())
                 .updatedAt(dto.getUpdatedAt())
                 .build();
